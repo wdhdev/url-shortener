@@ -6,3 +6,5 @@ Disallow: tailwind.config.js
 
 Allow: /assets/*
 Allow: index.html
+
+Sitemap: sitemap.xml
