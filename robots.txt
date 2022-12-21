@@ -1,5 +1,7 @@
 User-agent: *
+
 Disallow: 404.html
 Disallow: tailwind.config.js
+
 Allow: /assets/*
 Allow: index.html
