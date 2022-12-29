@@ -4,6 +4,7 @@
 # Links
 /activity https://github.williamharrison.dev/recent-activity
 /blog https://williamharrison.blog
+/blog/* https://williamharrison.blog/post/:splat
 /cmshark https://github.com/wclarkey/cmshark
 /coinflipjs https://coinflip.js.org
 /contact https://contact.wdh.gg
@@ -29,6 +30,7 @@
 /reddit https://www.reddit.com/u/williamdavidharrison
 /snap https://www.snapchat.com/add/wdharrison09
 /snapchat https://www.snapchat.com/add/wdharrison09
+/solo-to https://solo.to/wdh
 /spotify https://open.spotify.com/user/4kteqc82me1u1vxevzly2azqs
 /status https://status.williamharrison.xyz
 /steam https://steamcommunity.com/id/williamharrison
