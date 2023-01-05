@@ -17,6 +17,8 @@
 /fb https://www.facebook.com/wdharrison09
 /ffa https://futurefocusaccounting.com.au
 /ffa/github https://github.com/futurefocusaccounting/website
+/files https://upload.wdh.gg
+/files/* https://files.wdh.gg/:splat
 /gh https://github.com/williamdavidharrison
 /github https://github.com/williamdavidharrison
 /ig https://www.instagram.com/wdharrison09
