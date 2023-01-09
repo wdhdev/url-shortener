@@ -6,7 +6,6 @@
 /blog https://williamharrison.blog
 /blog/* https://williamharrison.blog/posts/:splat
 /cmshark https://github.com/wclarkey/cmshark
-/coinflipjs https://www.npmjs.com/package/coinflipjs
 /contact https://contact.wdh.gg
 /dev https://williamharrison.dev
 /discord https://discord.gg/wADVBmQkgg
