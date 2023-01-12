@@ -2,7 +2,7 @@
 /home / 301
 
 # Links
-/activity https://github.williamharrison.dev/recent-activity
+/activity https://activity.wdh.gg
 /blog https://williamharrison.blog
 /blog/* https://williamharrison.blog/posts/:splat
 /cmshark https://github.com/wclarkey/cmshark
@@ -13,11 +13,9 @@
 /discord/account https://discord.com/users/853158265466257448
 /dpc https://discord.wdh.gg
 /easyscript https://easyscript.dev
-/easyscriptjs https://easyscript.dev
 /facebook https://www.facebook.com/wdharrison09
 /fb https://www.facebook.com/wdharrison09
 /ffa https://futurefocusaccounting.com.au
-/ffa/github https://github.com/futurefocusaccounting/website
 /files https://upload.wdh.gg
 /files/* https://files.wdh.gg/:splat
 /gh https://github.com/williamdavidharrison
@@ -31,6 +29,7 @@
 /od https://github.com/open-domains/register
 /open-domains https://github.com/open-domains/register
 /reddit https://www.reddit.com/u/williamdavidharrison
+/sharex https://william.pics
 /snap https://www.snapchat.com/add/wdharrison09
 /snapchat https://www.snapchat.com/add/wdharrison09
 /solo-to https://solo.to/wdh
