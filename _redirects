@@ -26,11 +26,13 @@
 /files https://files.wdh.gg
 /files/* https://files.wdh.gg/:splat
 /gc https://discord.com/api/oauth2/authorize?client_id=1063314400804614174&permissions=355328&scope=bot%20applications.commands
+/gc/support https://discord.gg/9XW6ru8d9D
 /gh https://github.com/williamdavidharrison
 /gh/* https://github.com/williamdavidharrison/:splat
 /github https://github.com/williamdavidharrison
 /github/* https://github.com/williamdavidharrison/:splat
 /globalchat https://discord.com/api/oauth2/authorize?client_id=1063314400804614174&permissions=355328&scope=bot%20applications.commands
+/globalchat/support https://discord.gg/9XW6ru8d9D
 /html-404-page https://github.williamharrison.dev/html-404-page
 /ig https://www.instagram.com/wdharrison09
 /images/* https://images.wdh.gg/:splat
