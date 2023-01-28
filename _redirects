@@ -25,6 +25,7 @@
 /ffa https://futurefocusaccounting.com.au
 /files https://files.wdh.gg
 /files/* https://files.wdh.gg/:splat
+/free-domains https://github.com/free-domains/register
 /gc https://discord.com/api/oauth2/authorize?client_id=1063314400804614174&permissions=355328&scope=bot%20applications.commands
 /gc/support https://discord.gg/9XW6ru8d9D
 /gh https://github.com/williamdavidharrison
