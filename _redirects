@@ -3,11 +3,12 @@
 
 # Links
 /activity https://activity.wdh.gg
+/archive https://github.com/wharchive
 /blog https://williamharrison.blog
 /blog/* https://williamharrison.blog/posts/:splat
 /blooket https://blooket.wdh.gg
+/blooket-hacks https://blooket.wdh.gg
 /cmshark https://github.com/wclarkey/cmshark
-/coinflipjs https://www.npmjs.com/package/coinflipjs
 /coming-soon https://github.williamharrison.dev/coming-soon
 /contact https://contact.wdh.gg
 /dev https://williamharrison.dev
@@ -46,6 +47,7 @@
 /keybase https://keybase.io/wdharrison09
 /lag https://lag.wdh.gg
 /npm https://www.npmjs.com/~wdharrison09
+/npmjs https://www.npmjs.com/~wdharrison09
 /od https://github.com/open-domains/register
 /open-domains https://github.com/open-domains/register
 /pi https://pi.wdh.gg
