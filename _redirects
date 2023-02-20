@@ -34,6 +34,7 @@
 /gh https://github.com/williamdavidharrison
 /gh/* https://github.com/williamdavidharrison/:splat
 /gitbot https://discord.com/api/oauth2/authorize?client_id=1076373984360267819&permissions=84992&scope=bot%20applications.commands
+/gitbot/support https://discord.gg/VxjhGDF5ZD
 /github https://github.com/williamdavidharrison
 /github/* https://github.com/williamdavidharrison/:splat
 /globalchat https://discord.com/api/oauth2/authorize?client_id=1063314400804614174&permissions=355328&scope=bot%20applications.commands
