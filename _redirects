@@ -3,6 +3,7 @@
 
 # Links
 /activity https://activity.wdh.gg
+/alert https://alert.wdh.gg
 /archive https://github.com/wharchive
 /blog https://williamharrison.blog
 /blog/* https://williamharrison.blog/posts/:splat
@@ -29,6 +30,7 @@
 /files https://files.wdh.gg
 /files/* https://files.wdh.gg/:splat
 /free-domains https://freesubdomains.org
+/free-for-life https://free-for.life
 /gc https://discord.com/api/oauth2/authorize?client_id=1063314400804614174&permissions=355328&scope=bot%20applications.commands
 /gc/support https://discord.gg/9XW6ru8d9D
 /gh https://github.com/williamdavidharrison
@@ -54,6 +56,8 @@
 /open-domains https://github.com/open-domains/register
 /pi https://pi.wdh.gg
 /pinterest https://pinterest.com/wdharrison09
+/qr https://qrcode.wdh.gg
+/qrcode https://qrcode.wdh.gg
 /recent-activity https://activity.wdh.gg
 /reddit https://www.reddit.com/u/williamdavidharrison
 /sharex https://william.pics
