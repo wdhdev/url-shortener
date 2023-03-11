@@ -1,2 +1,4 @@
 # URL Shortener
-URL Shortener using Cloudflare Pages
+A basic URL Shortener using Cloudflare Pages.
+
+![Icons](https://skillicons.dev/icons?i=html,tailwind,cloudflare)
