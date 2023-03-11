@@ -1,4 +1,4 @@
 # URL Shortener
-A basic URL Shortener using Cloudflare Pages.
+A ultra-fast URL Shortener made in Node.js using a database.
 
-![Icons](https://skillicons.dev/icons?i=html,css,tailwind,cloudflare)
+![Icons](https://skillicons.dev/icons?i=nodejs,js,html,tailwind)
