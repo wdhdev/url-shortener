@@ -1,0 +1,22 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williamdavidharrison/url-shortener.git"
+  },
+  "author": "William Harrison",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/williamdavidharrison/url-shortener/issues"
+  },
+  "homepage": "https://github.com/williamdavidharrison/url-shortener#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.10.2"
+  }
+}
