@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 const bodyParser = require("body-parser");
+const fs = require("fs");
 
 const schema = require("./models/schema");
 
@@ -22,7 +23,7 @@ const database = require("./util/database");
 database();
 
 // Create or update a redirect
-app.post("/api/redirects", (req, res) => {
+app.post("/api/create-update", (req, res) => {
     const password = req.body.password;
 
     if(!password) return res.status(401).redirect("https://wdh.gg/responses/error?error=NO_PASSWORD");
@@ -33,7 +34,7 @@ app.post("/api/redirects", (req, res) => {
     if(!path) return res.status(400).redirect("https://wdh.gg/responses/error?error=NO_PATH");
     if(!redirect) return res.status(400).redirect("https://wdh.gg/responses/error?error=NO_REDIRECT");
 
-    let redirect_path = req.body.redirect_path || "false";
+    const redirect_path = req.body.redirect_path || "false";
 
     if(!Boolean(redirect_path)) return res.status(400).redirect("https://wdh.gg/responses/error?error=INVALID_REDIRECT_PATH_OPTION");
 
@@ -46,7 +47,15 @@ app.post("/api/redirects", (req, res) => {
                 redirect_path: redirect_path
             })
 
-            return res.status(200).redirect(`https://wdh.gg/responses/updated?path=${path}&old_redirect=${data.redirect}&new_redirect=${redirect}&old_redirect_path=${data.redirect_path}&new_redirect_path=${redirect_path}`);
+            let values = fs.readFileSync(__dirname + "/responses/updated.html", { encoding: "utf8" });
+
+            values = values.replace("{path}", path);
+            values = values.replace("{old_redirect}", data.redirect);
+            values = values.replace("{new_redirect}", redirect);
+            values = values.replace("{old_redirect_path}", data.redirect_path);
+            values = values.replace("{new_redirect_path}", redirect_path);
+
+            return res.send(values);
         } else {
             data = new schema({
                 path: path,
@@ -56,13 +65,19 @@ app.post("/api/redirects", (req, res) => {
 
             await data.save();
 
-            return res.status(201).redirect(`https://wdh.gg/responses/created?path=${path}&redirect=${redirect}&redirect_path=${redirect_path}`);
+            let values = fs.readFileSync(__dirname + "/responses/created.html", { encoding: "utf8" });
+
+            values = values.replace("{path}", path);
+            values = values.replace("{redirect}", redirect);
+            values = values.replace("{redirect_path}", redirect_path);
+
+            return res.send(values);
         }
     })
 })
 
 // Delete a redirect
-app.post("/api/redirects/delete", (req, res) => {
+app.post("/api/delete", (req, res) => {
     const password = req.body.password;
     const path = req.body.path;
 
@@ -76,7 +91,11 @@ app.post("/api/redirects/delete", (req, res) => {
         if(data) {
             await data.delete();
 
-            return res.status(204).redirect(`https://wdh.gg/responses/deleted?path=${path}`);
+            let values = fs.readFileSync(__dirname + "/responses/deleted.html", { encoding: "utf8" });
+
+            values = values.replace("{path}", path);
+
+            return res.send(values);
         } else {
             return res.status(404).redirect("https://wdh.gg/responses/error?error=INVALID_REDIRECT");
         }

@@ -20,7 +20,7 @@
             <i class="fa-solid fa-x bg-red-600 pt-2.5 pb-2 pl-4 pr-4 rounded-full text-3xl mb-2"></i>
             <h1 id="error" class="mb-6 text-2xl font-bold"></h1>
 
-            <a href="/manage" class="p-2 pl-4 pr-4 rounded-lg bg-gray-600 hover:bg-gray-700">Return Home</a>
+            <a href="/dashboard" class="p-2 pl-4 pr-4 rounded-lg bg-gray-600 hover:bg-gray-700">Go to Dashboard</a>
         </main>
     </body>
 
@@ -31,13 +31,18 @@
 
         let errors = {
             "INCORRECT_PASSWORD": "Incorrect Password",
+            "INVALID_REDIRECT": "Invalid Redirect",
             "INVALID_REDIRECT_PATH_OPTION": "Invalid Redirect Path Option",
             "NO_PASSWORD": "No Password",
             "NO_PATH": "No Path",
             "NO_REDIRECT": "No Redirect"
         }
 
-        document.title = `${errors[params.error]}`;
-        document.getElementById("error").innerHTML = `${errors[params.error]}`;
+        let error = errors[params.error];
+
+        if(!params.error || error === undefined) error = "An error occurred";
+
+        document.title = `${error}`;
+        document.getElementById("error").innerHTML = `${error}`;
     </script>
 </html>
