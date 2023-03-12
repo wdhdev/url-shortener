@@ -13,7 +13,6 @@
 
         <!-- Scripts -->
         <script src="https://cdn.tailwindcss.com"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet">
     </head>
 
     <body class="p-8 max-w-md m-auto bg-zinc-900 text-white text-center">
@@ -28,13 +27,12 @@
 
             <form id="redirect" autocomplete="false" class="mb-14" action="/api/create-update" method="POST">
                 <input type="password" name="password" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Password" required>
-
                 <input type="text" name="path" maxlength="64" autocomplete="false" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Redirect Path" required>
                 <input type="url" name="redirect" autocomplete="false" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-6" placeholder="Redirect URL" required>
 
                 <div class="flex items-center mb-4">
-                    <input type="checkbox" name="redirect_path" id="redirect_path" value="true" class="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 rounded">
-                    <label for="redirect_path" class="ml-2 text-sm font-medium text-gray-300">Redirect Paths</label>
+                    <input type="checkbox" name="redirect_path" id="redirect_path" value="true" class="appearance-none w-4 h-4 bg-red-500 border-gray-600 checked:bg-green-500 rounded peer">
+                    <label for="redirect_path" class="ml-1.5 text-sm font-medium text-gray-300">Redirect Paths</label>
                 </div>
 
                 <button type="submit" class="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
@@ -45,7 +43,6 @@
 
             <form id="delete-redirect" class="mb-10" action="/api/delete" method="POST">
                 <input type="password" name="password" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Password" required>
-
                 <input type="text" name="path" maxlength="64" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Redirect Path" required>
 
                 <button type="submit" class="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
@@ -57,7 +54,5 @@
         </footer>
     </body>
 
-    <script>
-        document.title = `Dashboard | ${location.host}`;
-    </script>
+    <script>document.title = `Dashboard | ${location.host}`;</script>
 </html>

@@ -1,7 +1,7 @@
 User-agent: *
 
 Disallow: /css/*
-Disallow: manage.html
+Disallow: dashboard.html
 Disallow: tailwind.config.js
 
 Allow: /assets/*

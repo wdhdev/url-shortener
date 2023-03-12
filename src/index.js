@@ -22,6 +22,16 @@ app.use(express.static(__dirname + "/public", {
 const database = require("./util/database");
 database();
 
+const invalidPaths = [
+    "assets",
+    "css",
+    "dashboard",
+    "index",
+    "responses",
+    "robots.txt",
+    "tailwind.config.js"
+]
+
 // Create or update a redirect
 app.post("/api/create-update", (req, res) => {
     const password = req.body.password;
@@ -29,7 +39,8 @@ app.post("/api/create-update", (req, res) => {
     if(!password) return res.status(401).redirect("https://wdh.gg/responses/error?error=NO_PASSWORD");
     if(password !== process.env.password) return res.status(401).redirect("https://wdh.gg/responses/error?error=INCORRECT_PASSWORD");
 
-    const { path, redirect } = req.body;
+    const path = req.body.path.toLowerCase();
+    const redirect = req.body.redirect.toLowerCase();
 
     if(!path) return res.status(400).redirect("https://wdh.gg/responses/error?error=NO_PATH");
     if(!redirect) return res.status(400).redirect("https://wdh.gg/responses/error?error=NO_REDIRECT");
@@ -37,6 +48,8 @@ app.post("/api/create-update", (req, res) => {
     const redirect_path = req.body.redirect_path || "false";
 
     if(!Boolean(redirect_path)) return res.status(400).redirect("https://wdh.gg/responses/error?error=INVALID_REDIRECT_PATH_OPTION");
+
+    if(invalidPaths.includes(path)) return res.status(403).redirect("https://wdh.gg/responses/error?error=INVALID_PATH_NAME");
 
     schema.findOne({ path: path }, async (err, data) => {
         if(err) return res.status(500);
@@ -79,7 +92,7 @@ app.post("/api/create-update", (req, res) => {
 // Delete a redirect
 app.post("/api/delete", (req, res) => {
     const password = req.body.password;
-    const path = req.body.path;
+    const path = req.body.path.toLowerCase();
 
     if(!password) return res.status(401).redirect("https://wdh.gg/responses/error?error=NO_PASSWORD");
     if(password !== process.env.password) return res.status(401).redirect("https://wdh.gg/responses/error?error=INCORRECT_PASSWORD");
@@ -104,7 +117,7 @@ app.post("/api/delete", (req, res) => {
 
 // Redirect requests
 app.use(async (req, res, next) => {
-    const path = req.url.replace(/^\//g, "").split("/")[0].split("?")[0];
+    const path = req.url.toLowerCase().replace(/^\//g, "").split("/")[0].split("?")[0];
 
     schema.findOne({ path: path }, async (err, data) => {
         if(err) return next();
