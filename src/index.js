@@ -40,7 +40,7 @@ app.post("/api/create-update", (req, res) => {
     if(password !== process.env.password) return res.status(401).redirect("https://wdh.gg/responses/error?error=INCORRECT_PASSWORD");
 
     const path = req.body.path.toLowerCase();
-    const redirect = req.body.redirect.toLowerCase();
+    const redirect = req.body.redirect;
 
     if(!path) return res.status(400).redirect("https://wdh.gg/responses/error?error=NO_PATH");
     if(!redirect) return res.status(400).redirect("https://wdh.gg/responses/error?error=NO_REDIRECT");
