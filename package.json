@@ -1,7 +1,7 @@
 {
   "name": "url-shortener",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "An ultra-fast URL Shortener made in Node.js using a database.",
   "main": "src/index.js",
   "repository": {
     "type": "git",
@@ -15,6 +15,7 @@
   "homepage": "https://github.com/williamdavidharrison/url-shortener#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.10.2"

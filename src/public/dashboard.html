@@ -11,6 +11,9 @@
         <!-- Favicon -->
         <link rel="shortcut icon" href="/assets/favicon.ico">
 
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
         <!-- Scripts -->
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
@@ -21,38 +24,104 @@
             <h1 class="text-3xl font-bold">Dashboard</h1>
         </header>
 
-        <main>
-            <!-- Create / Update a Redirect -->
-            <h2 class="text-2xl font-bold mb-4">Create / Update a Redirect</h2>
+        <main class="mb-8">
+            <!-- Create Redirect -->
+            <div>
+                <button id="create-btn" class="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mb-6" onclick="showCreate()">Create Redirect</button>
+            </div>
 
-            <form id="redirect" autocomplete="false" class="mb-14" action="/api/create-update" method="POST">
-                <input type="password" name="password" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Password" required>
-                <input type="text" name="path" maxlength="64" autocomplete="false" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Redirect Path" required>
-                <input type="url" name="redirect" autocomplete="false" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-6" placeholder="Redirect URL" required>
+            <div id="create" class="mt-6 mb-10 hidden">
+                <h2 class="text-2xl font-bold mb-4">Create Redirect</h2>
 
-                <div class="flex items-center mb-4">
-                    <input type="checkbox" name="redirect_path" id="redirect_path" value="true" class="appearance-none w-4 h-4 bg-red-500 border-gray-600 checked:bg-green-500 rounded peer">
-                    <label for="redirect_path" class="ml-1.5 text-sm font-medium text-gray-300">Redirect Paths</label>
+                <form id="create-redirect-form" onsubmit="createRedirect()">
+                    <input type="password" id="create-password" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Password" required>
+                    <input type="text" id="create-path" maxlength="64" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Redirect Path" required>
+                    <input type="url" id="create-redirect" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-6" placeholder="Redirect URL" required>
+
+                    <div class="flex items-center mb-4">
+                        <input type="checkbox" id="create-redirect-path" value="true" class="appearance-none w-4 h-4 bg-red-500 border-gray-600 checked:bg-green-500 rounded cursor-pointer">
+                        <label for="create-redirect-path" class="ml-1.5 text-sm font-medium text-gray-300 cursor-pointer">Redirect Paths</label>
+                    </div>
+
+                    <button id="create-submit-btn" type="submit" class="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5">Submit</button>
+                </form>
+
+                <div id="created-redirect" class="hidden">
+                    <i class="fa-solid fa-check bg-green-600 px-3 py-2 rounded-full text-3xl mb-2"></i>
+                    <h1 class="mb-6 text-2xl font-semibold">Redirect Created</h1>
                 </div>
 
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
-            </form>
+                <div id="create-error" class="hidden">
+                    <i class="fa-solid fa-x bg-red-600 pt-2.5 pb-2 px-4 rounded-full text-3xl mb-2"></i>
+                    <h1 id="create-error-text" class="mb-6 text-2xl font-semibold"></h1>
+                </div>
+            </div>
+
+            <!-- Update Redirect -->
+            <div>
+                <button id="update-btn" class="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mb-6" onclick="showUpdate()">Update Redirect</button>
+            </div>
+
+            <div id="update" class="mt-6 mb-10 hidden">
+                <h2 class="text-2xl font-bold mb-4">Update Redirect</h2>
+
+                <form id="update-redirect-form" onsubmit="updateRedirect()">
+                    <input type="password" id="update-password" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Password" required>
+                    <input type="text" id="update-path" maxlength="64" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Redirect Path" required>
+                    <input type="url" id="update-redirect" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-6" placeholder="Redirect URL" required>
+
+                    <div class="flex items-center mb-4">
+                        <input type="checkbox" id="update-redirect-path" value="true" class="appearance-none w-4 h-4 bg-red-500 border-gray-600 checked:bg-green-500 rounded cursor-pointer">
+                        <label for="update-redirect-path" class="ml-1.5 text-sm font-medium text-gray-300 cursor-pointer">Redirect Paths</label>
+                    </div>
+
+                    <button id="update-submit-btn" type="submit" class="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5">Submit</button>
+                </form>
+
+                <div id="updated-redirect" class="hidden">
+                    <i class="fa-solid fa-check bg-green-600 px-3 py-2 rounded-full text-3xl mb-2"></i>
+                    <h1 class="mb-6 text-2xl font-semibold">Redirect Updated</h1>
+                </div>
+
+                <div id="update-error" class="hidden">
+                    <i class="fa-solid fa-x bg-red-600 pt-2.5 pb-2 px-4 rounded-full text-3xl mb-2"></i>
+                    <h1 id="update-error-text" class="mb-6 text-2xl font-semibold"></h1>
+                </div>
+            </div>
 
             <!-- Delete Redirect -->
-            <h2 class="text-2xl font-bold mb-4">Delete a Redirect</h2>
+            <div>
+                <button id="delete-btn" class="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mb-6" onclick="showDelete()">Delete Redirect</button>
+            </div>
 
-            <form id="delete-redirect" class="mb-10" action="/api/delete" method="POST">
-                <input type="password" name="password" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Password" required>
-                <input type="text" name="path" maxlength="64" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Redirect Path" required>
+            <div id="delete" class="mt-6 mb-10 hidden">
+                <h2 class="text-2xl font-bold mb-4">Delete Redirect</h2>
+    
+                <form id="delete-redirect-form" onsubmit="deleteRedirect()">
+                    <input type="password" id="delete-password" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Password" required>
+                    <input type="text" id="delete-path" maxlength="64" class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 mb-4" placeholder="Redirect Path" required>
+    
+                    <button id="delete-submit-btn" type="submit" class="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5">Submit</button>
+                </form>
 
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
-            </form>
+                <div id="deleted-redirect" class="hidden">
+                    <i class="fa-solid fa-check bg-green-600 px-3 py-2 rounded-full text-3xl mb-2"></i>
+                    <h1 class="mb-6 text-2xl font-semibold">Redirect Deleted</h1>
+                </div>
+    
+                <div id="delete-error" class="hidden">
+                    <i class="fa-solid fa-x bg-red-600 pt-2.5 pb-2 px-4 rounded-full text-3xl mb-2"></i>
+                    <h1 id="delete-error-text" class="mb-6 text-2xl font-semibold"></h1>
+                </div>
+            </div>
         </main>
 
-        <footer class="mt-8">
+        <footer>
             <p>&copy; 2023 <span class="font-semibold">William Harrison</span> - All Rights Reserved.</p>
         </footer>
     </body>
 
     <script>document.title = `Dashboard | ${location.host}`;</script>
+    <script src="js/forms.js"></script>
+    <script src="js/submit.js"></script>
 </html>
