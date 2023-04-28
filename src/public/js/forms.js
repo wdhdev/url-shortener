@@ -14,11 +14,11 @@ async function showCreate() {
     createBtn.innerHTML = "Close Form";
     createBtn.classList.remove("mb-6");
 
-    createBtn.classList.remove("bg-blue-600");
+    createBtn.classList.remove("bg-green-600");
     createBtn.classList.add("bg-red-700");
-    createBtn.classList.remove("hover:bg-blue-700");
+    createBtn.classList.remove("hover:bg-green-700");
     createBtn.classList.add("hover:bg-red-800");
-    createBtn.classList.remove("focus:ring-blue-300");
+    createBtn.classList.remove("focus:ring-green-300");
     createBtn.classList.add("focus:ring-red-400");
 }
 
@@ -32,11 +32,11 @@ async function hideCreate() {
     createBtn.classList.add("mb-6");
 
     createBtn.classList.remove("bg-red-700");
-    createBtn.classList.add("bg-blue-600");
+    createBtn.classList.add("bg-green-600");
     createBtn.classList.remove("hover:bg-red-800");
-    createBtn.classList.add("hover:bg-blue-700");
+    createBtn.classList.add("hover:bg-green-700");
     createBtn.classList.remove("focus:ring-red-400");
-    createBtn.classList.add("focus:ring-blue-300");
+    createBtn.classList.add("focus:ring-green-300");
 }
 
 // Update Redirect Form
@@ -55,11 +55,11 @@ async function showUpdate() {
     updateBtn.innerHTML = "Close Form";
     updateBtn.classList.remove("mb-6");
 
-    updateBtn.classList.remove("bg-blue-600");
+    updateBtn.classList.remove("bg-yellow-600");
     updateBtn.classList.add("bg-red-700");
-    updateBtn.classList.remove("hover:bg-blue-700");
+    updateBtn.classList.remove("hover:bg-yellow-700");
     updateBtn.classList.add("hover:bg-red-800");
-    updateBtn.classList.remove("focus:ring-blue-300");
+    updateBtn.classList.remove("focus:ring-yellow-300");
     updateBtn.classList.add("focus:ring-red-400");
 }
 
@@ -73,11 +73,11 @@ async function hideUpdate() {
     updateBtn.classList.add("mb-6");
 
     updateBtn.classList.remove("bg-red-700");
-    updateBtn.classList.add("bg-blue-600");
+    updateBtn.classList.add("bg-yellow-600");
     updateBtn.classList.remove("hover:bg-red-800");
-    updateBtn.classList.add("hover:bg-blue-700");
+    updateBtn.classList.add("hover:bg-yellow-700");
     updateBtn.classList.remove("focus:ring-red-400");
-    updateBtn.classList.add("focus:ring-blue-300");
+    updateBtn.classList.add("focus:ring-yellow-300");
 }
 
 // Delete Redirect Form
@@ -96,11 +96,11 @@ async function showDelete() {
     deleteBtn.innerHTML = "Close Form";
     deleteBtn.classList.remove("mb-6");
 
-    deleteBtn.classList.remove("bg-blue-600");
+    deleteBtn.classList.remove("bg-red-600");
     deleteBtn.classList.add("bg-red-700");
-    deleteBtn.classList.remove("hover:bg-blue-700");
+    deleteBtn.classList.remove("hover:bg-red-700");
     deleteBtn.classList.add("hover:bg-red-800");
-    deleteBtn.classList.remove("focus:ring-blue-300");
+    deleteBtn.classList.remove("focus:ring-red-300");
     deleteBtn.classList.add("focus:ring-red-400");
 }
 
@@ -114,9 +114,9 @@ async function hideDelete() {
     deleteBtn.classList.add("mb-6");
 
     deleteBtn.classList.remove("bg-red-700");
-    deleteBtn.classList.add("bg-blue-600");
+    deleteBtn.classList.add("bg-red-600");
     deleteBtn.classList.remove("hover:bg-red-800");
-    deleteBtn.classList.add("hover:bg-blue-700");
+    deleteBtn.classList.add("hover:bg-red-700");
     deleteBtn.classList.remove("focus:ring-red-400");
-    deleteBtn.classList.add("focus:ring-blue-300");
+    deleteBtn.classList.add("focus:ring-red-300");
 }
