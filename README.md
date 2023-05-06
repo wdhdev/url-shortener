@@ -1,13 +1,13 @@
 # URL Shortener
 An ultra-fast URL Shortener made in Node.js using a database.
 
-**Backend Languages**:
+**Backend**:
 
-![Backend Languages](https://skillicons.dev/icons?i=nodejs,mongodb)
+![Backend](https://skillicons.dev/icons?i=nodejs,express,mongodb)
 
-**Frontend Languages**:
+**Frontend**:
 
-![Frontend Languages](https://skillicons.dev/icons?i=html,tailwind,js)
+![Frontend](https://skillicons.dev/icons?i=html,tailwind,js)
 
 ## Live Preview
 A live, hosted preview of this URL shortener can be found [here](https://wdh.gg).
