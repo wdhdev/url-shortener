@@ -19,12 +19,11 @@
     </head>
 
     <body class="p-8 max-w-md m-auto bg-zinc-900 text-white text-center">
-        <header class="mb-8">
-            <img src="/assets/logo.png" class="h-24 rounded-full mx-auto mb-2">
-            <h1 class="text-3xl font-bold">Dashboard</h1>
+        <header class="mb-6">
+            <h1 id="heading" class="text-3xl font-bold">Dashboard</h1>
         </header>
 
-        <main class="mb-8">
+        <main>
             <!-- Create Redirect -->
             <div>
                 <button id="create-btn" class="bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 mb-6" onclick="showCreate()">Create Redirect</button>
@@ -121,7 +120,11 @@
         </footer>
     </body>
 
-    <script>document.title = `Dashboard | ${location.host}`;</script>
-    <script src="/js/forms.js"></script>
-    <script src="/js/submit.js"></script>
+    <script>
+        document.title = `Dashboard | ${location.host}`;
+        document.getElementById("heading").innerText = `${location.host}`;
+    </script>
+
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/dashboard-forms.js"></script>
 </html>
