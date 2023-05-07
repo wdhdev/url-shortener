@@ -8,12 +8,33 @@ const schema = require("../models/schema");
 const invalidPaths = [
     "api",
     "assets",
+    "css",
     "dashboard",
     "index",
-    "responses",
+    "js",
+    "redirects",
     "robots.txt",
     "tailwind.config.js"
 ]
+
+// Get all redirects
+router.get("/api/redirects", async (req, res) => {
+    const redirects = [];
+
+    schema.find({}, async (err, data) => {
+        if(err) return res.status(500);
+
+        data.forEach(redirect => {
+            redirects.push({
+                "path": redirect.path,
+                "redirect": redirect.redirect,
+                "redirect_path": redirect.redirect_path
+            })
+        })
+
+        return res.status(200).json(redirects);
+    })
+})
 
 // Create a redirect
 router.put("/api/redirects", async (req, res) => {
@@ -27,10 +48,7 @@ router.put("/api/redirects", async (req, res) => {
 
     const path = req.body.path.toLowerCase();
     const redirect = req.body.redirect;
-
-    const redirect_path = req.body.redirect_path || false;
-
-    if(!Boolean(redirect_path)) return res.status(400).json({ "message": "Invalid redirect path option provided.", "code": "INVALID_REDIRECT_PATH_OPTION" });
+    const redirect_path = req.body.redirect_path;
 
     let validPath = true;
 
@@ -73,14 +91,13 @@ router.patch("/api/redirects", async (req, res) => {
 
     const path = req.body.path.toLowerCase();
     const redirect = req.body.redirect;
-
-    const redirect_path = req.body.redirect_path || false;
-
-    if(!Boolean(redirect_path)) return res.status(400).json({ "message": "Invalid redirect path option provided.", "code": "INVALID_REDIRECT_PATH_OPTION" });
+    const redirect_path = req.body.redirect_path;
 
     if(!await schema.exists({ "path": path }).clone()) return res.status(204).json({ "message": "Path does not exist.", "code": "INVALID_PATH" });
 
     const old = await schema.findOne({ "path": path }, async (err, data) => data).clone();
+
+    await schema.findOneAndUpdate({ "path": path }, { redirect: redirect, redirect_path: redirect_path });
 
     res.status(200).json({
         "message": "Updated redirect.",
@@ -100,10 +117,8 @@ router.patch("/api/redirects", async (req, res) => {
 
 // Delete a redirect
 router.delete("/api/redirects", async (req, res) => {
-    const password = req.headers.password;
-
-    if(!password) return res.status(401).json({ "message": "No password provided.", "code": "NO_PASSWORD" });
-    if(password !== process.env.password) return res.status(401).json({ "message": "The password provided was incorrect.", "code": "INCORRECT_PASSWORD" });
+    if(!req.headers.password) return res.status(401).json({ "message": "No password provided.", "code": "NO_PASSWORD" });
+    if(req.headers.password !== process.env.password) return res.status(401).json({ "message": "The password provided was incorrect.", "code": "INCORRECT_PASSWORD" });
 
     if(!req.headers.path) return res.status(400).json({ "message": "No path name was provided.", "code": "NO_PATH_NAME" });
 
@@ -114,25 +129,6 @@ router.delete("/api/redirects", async (req, res) => {
     await schema.findOneAndDelete({ path: path });
 
     return res.status(200).json({ "message": "Deleted redirect.", "code": "DELETED_REDIRECT", "redirect": { "path": path } });
-})
-
-// Get all redirects
-router.get("/redirects", async (req, res) => {
-    const redirects = [];
-
-    schema.find({}, async (err, data) => {
-        if(err) return res.status(500);
-
-        data.forEach(redirect => {
-            redirects.push({
-                "path": redirect.path,
-                "redirect": redirect.redirect,
-                "redirect_path": redirect.redirect_path
-            })
-        })
-
-        return res.status(200).json(redirects);
-    })
 })
 
 // Redirect requests

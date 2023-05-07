@@ -14,7 +14,7 @@ async function createRedirect() {
     createSubmitBtn.setAttribute("disabled", true);
     createSubmitBtn.innerHTML = "Creating Redirect...";
 
-    fetch("https://wdh.gg/api/redirects", {
+    fetch("/api/redirects", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -23,7 +23,7 @@ async function createRedirect() {
         body: JSON.stringify({
             path: createData.path.value,
             redirect: createData.redirect.value,
-            redirect_path: createData.redirect_path.value
+            redirect_path: createData.redirect_path.checked
         })
     }).then(res => res.json()).then(data => {
         createForm.reset();
@@ -71,7 +71,7 @@ async function updateRedirect() {
     updateSubmitBtn.setAttribute("disabled", true);
     updateSubmitBtn.innerHTML = "Updating Redirect...";
 
-    fetch("https://wdh.gg/api/redirects", {
+    fetch("/api/redirects", {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -80,7 +80,7 @@ async function updateRedirect() {
         body: JSON.stringify({
             path: updateData.path.value,
             redirect: updateData.redirect.value,
-            redirect_path: updateData.redirect_path.value
+            redirect_path: updateData.redirect_path.checked
         })
     }).then(res => res.json()).then(data => {
         updateForm.reset();
@@ -126,7 +126,7 @@ async function deleteRedirect() {
     deleteSubmitBtn.setAttribute("disabled", true);
     deleteSubmitBtn.innerHTML = "Deleting Redirect...";
 
-    fetch("https://wdh.gg/api/redirects", {
+    fetch("/api/redirects", {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
