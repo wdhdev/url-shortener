@@ -14,18 +14,27 @@ function loadRedirects() {
             let c2 = row.insertCell(1);
             let c3 = row.insertCell(2);
 
+            c1.classList = "px-4 py-2 outline outline-1 outline-gray-700";
+            c2.classList = "px-4 py-2 outline outline-1 outline-gray-700";
+            c3.classList = "px-4 py-2 outline outline-1 outline-gray-700";
+
             const redirect_path = {
-                false: "False",
-                true: "True"
+                false: "No",
+                true: "Yes"
             }
 
-            c1.innerHTML = `<a href="/${redirect.path}">/${redirect.path}</a>`;
+            const redirect_path_colour = {
+                false: "text-red-600",
+                true: "text-green-600"
+            }
+
+            c1.innerHTML = `<a href="/${redirect.path}" class="font-semibold text-blue-600 hover:text-blue-700">/${redirect.path}</a>`;
             c1.setAttribute("data-column", "path");
 
-            c2.innerHTML = `<a href="${redirect.redirect}">${redirect.redirect}</a>`;
+            c2.innerHTML = `<a href="${redirect.redirect}" class="text-gray-400 underline underline-2 hover:no-underline">${redirect.redirect}</a>`;
             c2.setAttribute("data-column", "redirect");
 
-            c3.innerText = redirect_path[redirect.redirect_path];
+            c3.innerHTML = `<span class="${redirect_path_colour[redirect.redirect_path]}">${redirect_path[redirect.redirect_path]}</span>`;
             c3.setAttribute("data-column", "redirect-path");
         })
     })

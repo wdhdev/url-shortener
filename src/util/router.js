@@ -8,7 +8,6 @@ const schema = require("../models/schema");
 const invalidPaths = [
     "api",
     "assets",
-    "css",
     "dashboard",
     "index",
     "js",

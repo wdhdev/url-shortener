@@ -11,18 +11,17 @@
         <!-- Favicon -->
         <link rel="shortcut icon" href="/assets/favicon.ico">
 
-        <!-- Stylesheets -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap">
-        <link rel="stylesheet" href="/css/redirects.css">
+        <!-- Scripts -->
+        <script src="https://cdn.tailwindcss.com"></script>
     </head>
 
-    <body>
-        <div class="container">
-            <table id="redirects">
-                <thead>
-                    <th data-sort="path" onclick="sortTable();">Path</th>
-                    <th data-sort="redirect" onclick="sortTable();">Redirect</th>
-                    <th data-sort="redirect-path" onclick="sortTable();">Redirect Path</th>
+    <body class="bg-gray-800 text-white">
+        <div class="relative overflow-x-auto">
+            <table id="redirects" class="w-full text-sm text-left text-gray-400">
+                <thead class="text-xs uppercase bg-gray-900 text-gray-400">
+                    <th data-sort="path" onclick="sortTable();" scope="col" class="px-4 py-3 outline outline-1 outline-gray-700 cursor-pointer">Path</th>
+                    <th data-sort="redirect" onclick="sortTable();" scope="col" class="px-4 py-3 outline outline-1 outline-gray-700 cursor-pointer">Redirect</th>
+                    <th data-sort="redirect-path" onclick="sortTable();" scope="col" class="px-4 py-3 outline outline-1 outline-gray-700 cursor-pointer">Redirect Path</th>
                 </thead>
 
                 <tbody id="redirects-body"></tbody>
