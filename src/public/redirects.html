@@ -11,6 +11,9 @@
         <!-- Favicon -->
         <link rel="shortcut icon" href="/assets/favicon.ico">
 
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
         <!-- Scripts -->
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
@@ -19,9 +22,9 @@
         <div class="relative overflow-x-auto">
             <table id="redirects" class="w-full text-sm text-left text-gray-400">
                 <thead class="text-xs uppercase bg-gray-900 text-gray-400">
-                    <th data-sort="path" onclick="sortTable();" scope="col" class="px-4 py-3 outline outline-1 outline-gray-700 cursor-pointer">Path</th>
-                    <th data-sort="redirect" onclick="sortTable();" scope="col" class="px-4 py-3 outline outline-1 outline-gray-700 cursor-pointer">Redirect</th>
-                    <th data-sort="redirect-path" onclick="sortTable();" scope="col" class="px-4 py-3 outline outline-1 outline-gray-700 cursor-pointer">Redirect Path</th>
+                    <th scope="col" class="px-4 py-3 outline outline-1 outline-gray-700">Path</th>
+                    <th scope="col" class="px-4 py-3 outline outline-1 outline-gray-700">Redirect</th>
+                    <th scope="col" class="px-4 py-3 outline outline-1 outline-gray-700">Redirect Path</th>
                 </thead>
 
                 <tbody id="redirects-body"></tbody>
