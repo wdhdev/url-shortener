@@ -1,19 +1,20 @@
 {
   "name": "url-shortener",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "An ultra-fast URL Shortener made in Node.js using a database.",
-  "main": "src/index.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/williamdavidharrison/url-shortener.git"
+    "url": "git+https://github.com/wdhdev/url-shortener.git"
   },
   "author": "William Harrison",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/williamdavidharrison/url-shortener/issues"
+    "url": "https://github.com/wdhdev/url-shortener/issues"
   },
-  "homepage": "https://github.com/williamdavidharrison/url-shortener#readme",
+  "homepage": "https://wdh.gg",
   "dependencies": {
+    "@sentry/node": "^7.54.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
