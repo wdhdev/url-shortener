@@ -27,10 +27,11 @@ app.use(cors({ origin: "*" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.engine("html", require("ejs").renderFile);
+app.set("view engine", "ejs");
+
 // Host public files
-app.use(express.static(__dirname + "/public", {
-    extensions: ["html"]
-}))
+app.use(express.static(__dirname + "/public"));
 
 // Connect to Database
 const database = require("./util/database");
