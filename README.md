@@ -3,7 +3,7 @@ An ultra-fast URL Shortener made in Node.js using a database.
 
 **Backend**
 
-![Backend](https://skillicons.dev/icons?i=nodejs,express,mongodb)
+![Backend](https://skillicons.dev/icons?i=nodejs,express,mongodb,sentry)
 
 **Frontend**
 
