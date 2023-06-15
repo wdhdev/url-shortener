@@ -3,6 +3,9 @@
   "version": "1.2.0",
   "description": "An ultra-fast URL Shortener made in Node.js using a database.",
   "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wdhdev/url-shortener.git"
