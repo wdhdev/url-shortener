@@ -1,5 +1,5 @@
 module.exports = async (req, res) => {
-    const schema = require("../../../models/schema");
+    const Redirect = require("../../../models/Redirect");
 
     if(!req.headers.password) return res.status(401).json({ "message": "No password provided.", "code": "NO_PASSWORD" });
     if(req.headers.password !== process.env.password) return res.status(401).json({ "message": "The password provided was incorrect.", "code": "INCORRECT_PASSWORD" });
@@ -8,9 +8,11 @@ module.exports = async (req, res) => {
 
     const path = req.headers.path.toLowerCase();
 
-    if(!await schema.exists({ path: path }).clone()) return res.status(404).json({ "message": "Redirect does not exist.", "code": "INVALID_REDIRECT" });
+    const redirect = await Redirect.findOne({ path: path });
 
-    await schema.findOneAndDelete({ path: path });
+    if(!redirect) return res.status(404).json({ "message": "Redirect does not exist.", "code": "INVALID_REDIRECT" });
 
-    res.status(200).json({ "message": "Deleted redirect.", "code": "DELETED_REDIRECT", "redirect": { "path": path } });
+    await redirect.delete();
+
+    res.status(200).json({ "message": "Deleted redirect.", "code": "DELETED_REDIRECT", "redirect": { path: path } });
 }

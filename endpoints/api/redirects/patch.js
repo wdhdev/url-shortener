@@ -1,5 +1,5 @@
 module.exports = async (req, res) => {
-    const schema = require("../../../models/schema");
+    const Redirect = require("../../../models/Redirect");
 
     const password = req.headers.password;
 
@@ -13,23 +13,23 @@ module.exports = async (req, res) => {
     const redirect = req.body.redirect;
     const redirect_path = req.body.redirect_path;
 
-    if(!await schema.exists({ "path": path }).clone()) return res.status(204).json({ "message": "Path does not exist.", "code": "INVALID_PATH" });
+    const data = await Redirect.findOne({ path: path });
 
-    const old = await schema.findOne({ "path": path }, async (err, data) => data).clone();
+    if(!data) return res.status(204).json({ "message": "Path does not exist.", "code": "INVALID_PATH" });
 
-    await schema.findOneAndUpdate({ "path": path }, { redirect: redirect, redirect_path: redirect_path });
+    await Redirect.findOneAndUpdate({ path: path }, { redirect: redirect, redirect_path: redirect_path });
 
     res.status(200).json({
         "message": "Updated redirect.",
         "code": "UPDATED_REDIRECT",
-        "path": `${path}`,
+        "path": path,
         "old": {
-            "redirect": `${old.redirect}`,
-            "redirect_path": `${old.redirect_path}`
+            "redirect": data.redirect,
+            "redirect_path": data.redirect_path
         },
         "new": {
-            "redirect": `${redirect}`,
-            "redirect_path": `${redirect_path}`
+            "redirect": redirect,
+            "redirect_path": redirect_path
         }
     })
 }

@@ -1,7 +1,7 @@
 module.exports = async (req, res) => {
-    const schema = require("../../../models/schema");
+    const Redirect = require("../../../models/Redirect");
 
-    const data = await schema.find();
+    const data = await Redirect.find();
 
     const redirects = [];
 

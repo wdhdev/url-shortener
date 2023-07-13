@@ -35,10 +35,10 @@ router.get("/redirects", async (req, res) => {
 
 // Redirect requests
 router.use(async (req, res, next) => {
-    const schema = require("../models/schema");
+    const Redirect = require("../models/Redirect");
     const path = req.url.toLowerCase().replace(/^\//g, "").split("/")[0].split("?")[0];
 
-    schema.findOne({ path: path }, async (err, data) => {
+    Redirect.findOne({ path: path }, async (err, data) => {
         if(err) return next();
 
         if(!data) return res.status(404).redirect("/");

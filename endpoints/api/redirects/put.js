@@ -1,5 +1,5 @@
 module.exports = async (req, res) => {
-    const schema = require("../../../models/schema");
+    const Redirect = require("../../../models/Redirect");
 
     const invalidPaths = [
         ".",
@@ -34,15 +34,13 @@ module.exports = async (req, res) => {
 
     if(!validPath) return res.status(403).json({ "message": "The provided path name is invalid.", "code": "INVALID_PATH_NAME" });
 
-    if(await schema.exists({ path: path }).clone()) return res.status(400).json({ "message": "Redirect already exists.", "code": "REDIRECT_EXISTS" });
+    if(await Redirect.exists({ path: path })) return res.status(400).json({ "message": "Redirect already exists.", "code": "REDIRECT_EXISTS" });
 
-    data = new schema({
+    new Redirect({
         path: path,
         redirect: redirect,
         redirect_path: redirect_path
-    })
-
-    await data.save();
+    }).save()
 
     res.status(200).json({
         "message": "Created redirect.",
