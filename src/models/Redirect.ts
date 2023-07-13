@@ -6,4 +6,4 @@ const schema = new mongoose.Schema({
     redirect_path: Boolean
 })
 
-module.exports = mongoose.model("redirects", schema, "redirects")
+export default mongoose.model("redirects", schema, "redirects")

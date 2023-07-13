@@ -1,11 +1,12 @@
-const express = require("express");
+import express from "express";
 const app = express();
 
 require("dotenv").config();
 
-const Sentry = require("@sentry/node");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+import { Request } from "express";
+import * as Sentry from "@sentry/node";
+import bodyParser from "body-parser";
+import cors from "cors";
 
 Sentry.init({
     dsn: process.env.sentry_dsn,
@@ -17,18 +18,19 @@ Sentry.init({
     tracesSampleRate: 1.0
 })
 
-const port = process.env.port || 3000;
-const router = require("./util/router");
+import router from "./util/router";
+const port = process.env.port;
 
 app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
 
-app.use(cors({ origin: "*" }));
+app.use(cors<Request>({ origin: "*" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "ejs");
+app.set("views", "./views");
 
 // Host public files
 app.use(express.static(__dirname + "/public"));
@@ -37,7 +39,6 @@ app.use(express.static(__dirname + "/public"));
 const database = require("./util/database");
 database();
 
-// Router
 app.use("/", router);
 
 app.use(Sentry.Handlers.errorHandler());
