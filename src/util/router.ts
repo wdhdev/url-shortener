@@ -3,7 +3,7 @@ import { Router } from "express";
 const router = Router();
 import routes from "./routes";
 
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import Redirect from "../models/Redirect";
 require("dotenv").config();
 
@@ -36,7 +36,7 @@ router.get("/redirects", async (req: Request, res: Response) => {
 })
 
 // Redirect requests
-router.use(async (req, res, next) => {
+router.use(async (req: Request, res: Response, next: NextFunction) => {
     const path = req.url.toLowerCase().replace(/^\//g, "").split("/")[0].split("?")[0];
 
     const data = await Redirect.findOne({ path: path });
