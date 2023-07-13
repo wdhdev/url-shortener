@@ -48,7 +48,7 @@ router.use(async (req: Request, res: Response, next: NextFunction) => {
 
         return res.redirect(302, data.redirect);
     } else {
-        next();
+        return res.status(404).redirect("/");
     }
 })
 
