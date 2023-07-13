@@ -30,7 +30,7 @@ app.use(express.json());
 
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "ejs");
-app.set("views", "./views");
+app.set("views", "src/views");
 
 // Host public files
 app.use(express.static(__dirname + "/public"));
