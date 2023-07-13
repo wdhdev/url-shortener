@@ -33,7 +33,7 @@ app.set("view engine", "ejs");
 app.set("views", "src/views");
 
 // Host public files
-app.use(express.static(__dirname + "src/public"));
+app.use(express.static(__dirname + "./public"));
 
 // Connect to Database
 const database = require("./util/database");
