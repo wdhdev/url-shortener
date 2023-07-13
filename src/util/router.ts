@@ -41,14 +41,14 @@ router.use(async (req: Request, res: Response, next: NextFunction) => {
 
     const data = await Redirect.findOne({ path: path });
 
-    if(!data) return res.status(404).redirect("/");
-
     if(data) {
         const subpath = req.url.replace(data.path, "").replace("/", "");
 
         if(data.redirect_path) return res.redirect(302, data.redirect + subpath);
 
         return res.redirect(302, data.redirect);
+    } else {
+        next();
     }
 })
 

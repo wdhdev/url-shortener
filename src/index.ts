@@ -30,13 +30,12 @@ app.use(express.json());
 
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "ejs");
-app.set("views", "src/views");
 
 // Connect to Database
 const database = require("./util/database");
 database();
 
-app.use("/", express.static(__dirname + "/public"));
+app.use(express.static("public"));
 app.use("/", router);
 
 app.use(Sentry.Handlers.errorHandler());
