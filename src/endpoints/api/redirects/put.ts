@@ -10,6 +10,7 @@ export default async (req: Request, res: Response) => {
         "assets",
         "dashboard",
         "index",
+        "info",
         "js",
         "redirects",
         "robots.txt",
