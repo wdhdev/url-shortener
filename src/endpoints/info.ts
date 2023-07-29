@@ -4,7 +4,7 @@ import moment from "moment";
 import Redirect from "../models/Redirect";
 
 export default async (req: Request, res: Response) => {
-    const data = await Redirect.findOne({ path: req.params.path });
+    const data = await Redirect.findOne({ path: req.params.path.slice(0, -1) });
 
     if(!data) return res.status(404).redirect("/");
  

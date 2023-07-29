@@ -42,7 +42,9 @@ export default async (req: Request, res: Response) => {
     new Redirect({
         path: path,
         redirect: redirect,
-        redirect_path: redirect_path
+        redirect_path: redirect_path,
+        created: Date.now(),
+        hits: 0
     }).save()
 
     res.status(200).json({

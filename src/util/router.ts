@@ -31,12 +31,12 @@ router.get("/dashboard", async (req: Request, res: Response) => {
     routes.dashboard(req, res);
 })
 
-router.get("/info/:path", async (req: Request, res: Response) => {
-    routes.info(req, res);
-})
-
 router.get("/redirects", async (req: Request, res: Response) => {
     routes.redirects(req, res);
+})
+
+router.get("/:path(\\w+\\+)", async (req: Request, res: Response) => {
+    routes.info(req, res);
 })
 
 // Redirect requests
