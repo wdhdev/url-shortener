@@ -35,7 +35,7 @@ router.get("/redirects", async (req: Request, res: Response) => {
     routes.redirects(req, res);
 })
 
-router.get("/:path(\\w+\\+)", async (req: Request, res: Response) => {
+router.get("/info/:path", async (req: Request, res: Response) => {
     routes.info(req, res);
 })
 
