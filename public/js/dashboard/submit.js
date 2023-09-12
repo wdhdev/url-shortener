@@ -39,7 +39,7 @@ async function createRedirect() {
             setTimeout(() => {
                 document.getElementById("created-redirect").classList.add("hidden");
                 createForm.classList.remove("hidden");
-            }, 5000);
+            }, 2500);
             return;
         }
 
@@ -51,7 +51,7 @@ async function createRedirect() {
             document.getElementById("create-error-text").innerHTML = "";
 
             createForm.classList.remove("hidden");
-        }, 5000);
+        }, 2500);
     })
 }
 
@@ -96,7 +96,7 @@ async function updateRedirect() {
             setTimeout(() => {
                 document.getElementById("updated-redirect").classList.add("hidden");
                 updateForm.classList.remove("hidden");
-            }, 5000);
+            }, 2500);
             return;
         }
 
@@ -108,7 +108,7 @@ async function updateRedirect() {
             document.getElementById("update-error-text").innerHTML = "";
 
             updateForm.classList.remove("hidden");
-        }, 5000);
+        }, 2500);
     })
 }
 
@@ -147,7 +147,7 @@ async function deleteRedirect() {
             setTimeout(() => {
                 document.getElementById("deleted-redirect").classList.add("hidden");
                 deleteForm.classList.remove("hidden");
-            }, 5000);
+            }, 2500);
             return;
         }
 
@@ -159,6 +159,6 @@ async function deleteRedirect() {
             document.getElementById("delete-error-text").innerHTML = "";
 
             deleteForm.classList.remove("hidden");
-        }, 5000);
+        }, 2500);
     })
 }
