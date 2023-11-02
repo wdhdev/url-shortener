@@ -14,7 +14,7 @@ export default async (req: Request, res: Response) => {
 
     if(!redirect) return res.status(404).json({ message: "Redirect does not exist.", code: "INVALID_REDIRECT" });
 
-    await redirect.delete();
+    await redirect.deleteOne();
 
     res.status(200).json({ message: "Deleted redirect.", code: "DELETED_REDIRECT", redirect: { path: path } });
 }
